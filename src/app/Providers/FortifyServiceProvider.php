@@ -2,46 +2,33 @@
 
 namespace App\Providers;
 
-use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Fortify\ResetUserPassword;
-use App\Actions\Fortify\UpdateUserPassword;
-use App\Actions\Fortify\UpdateUserProfileInformation;
-use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\ServiceProvider;
 
 class FortifyServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
+    public function boot()
     {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        Fortify::createUsersUsing(CreateNewUser::class);
-
-        Fortify::registerView(function () {
-            return view('auth.register');
-        });
-
+        // 🔹 Fortify のログイン画面を指定（ビューがないとエラーになる）
         Fortify::loginView(function () {
-            return view('auth.login');
+            return view('auth.login'); // `resources/views/auth/login.blade.php` を指定
         });
 
-        RateLimiter::for('login', function (Request $request) {
-            $email = (string) $request->email;
+        // 🔹 Fortify のログイン認証をカスタマイズ（バリデーションを適用）
+        Fortify::authenticateUsing(function (Request $request) {
+            $credentials = $request->validate([
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            ]);
 
-            return Limit::perMinute(10)->by($email . $request->ip());
+            // 🔹 認証処理（メールアドレス & パスワードが正しいかチェック）
+            if (Auth::attempt($credentials)) {
+                return Auth::user(); // ✅ 認証成功
+            }
+
+            return null; // ❌ 認証失敗
         });
     }
 }
