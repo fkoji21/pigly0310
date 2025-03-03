@@ -1,0 +1,18 @@
+/docker/mysql/data/
+# 環境変数ファイル
+.env
+.env.local
+.env.production
+.env.development
+
+# Laravel関連
+/vendor
+/node_modules
+/storage
+/public/storage
+/bootstrap/cache
+
+# IDEやOSの不要ファイル
+/.idea
+/.vscode
+*.DS_Store
