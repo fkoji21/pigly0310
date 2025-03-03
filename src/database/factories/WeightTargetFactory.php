@@ -3,9 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 
-class UserFactory extends Factory
+class WeightTargetFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +14,8 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'password' => Hash::make('password'), // 初期パスワード
+            'user_id' => 1, // 1人目のユーザーに紐付け
+            'target_weight' => $this->faker->randomFloat(1, 40, 100), // 40kg～100kgのランダム値
             'created_at' => now(),
             'updated_at' => now(),
         ];
