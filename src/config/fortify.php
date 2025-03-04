@@ -158,6 +158,7 @@ return [
     ],
 
     'redirects' => [
+        'login' => '/weight_logs',
         'register' => '/register/step2',
     ],
 

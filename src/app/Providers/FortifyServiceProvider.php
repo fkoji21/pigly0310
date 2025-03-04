@@ -26,6 +26,9 @@ class FortifyServiceProvider extends ServiceProvider
         // 🔹 Fortify のユーザー登録処理を CreateNewUser に委託
         Fortify::createUsersUsing(CreateNewUser::class);
 
+        // 🔹 ログイン後のリダイレクト先を変更
+        Fortify::redirects('login', '/weight_logs.index');
+
         // ユーザー登録後に `/register/step2` にリダイレクト
         Fortify::redirects('register', '/register/step2');
 
