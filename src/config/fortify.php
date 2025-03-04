@@ -157,4 +157,8 @@ return [
         ]),
     ],
 
+    'redirects' => [
+        'register' => '/register/step2',
+    ],
+
 ];
