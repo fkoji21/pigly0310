@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\WeightLog;
 use App\Models\WeightTarget;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\WeightLogRequest;
 
 class WeightLogController extends Controller
 {
@@ -34,18 +35,10 @@ class WeightLogController extends Controller
     }
 
     // 体重をデータベースに保存
-    public function store(Request $request)
+    public function store(WeightLogRequest $request)
     {
-        $request->validate([
-            'date' => 'required|date',
-            'weight' => 'required|numeric|min:1|max:300',
-            'calories' => 'nullable|integer|min:0',
-            'exercise_time' => 'nullable|date_format:H:i',
-            'exercise_content' => 'nullable|string|max:255',
-        ]);
-
         WeightLog::create([
-            'user_id' => Auth::id(),
+            'user_id' => Auth::id(), // ログイン中のユーザーIDを追加
             'date' => $request->date,
             'weight' => $request->weight,
             'calories' => $request->calories,
@@ -53,7 +46,7 @@ class WeightLogController extends Controller
             'exercise_content' => $request->exercise_content,
         ]);
 
-        return redirect()->route('weight_logs.create')->with('success', '体重を記録しました！');
+        return redirect()->route('weight_logs.index')->with('success', '体重を記録しました！');
     }
 
     // 体重編集フォームを表示
@@ -86,6 +79,6 @@ class WeightLogController extends Controller
         $log = WeightLog::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
         $log->delete();
 
-        return redirect()->route('weight_logs.create')->with('success', '体重データを削除しました。');
+        return redirect()->route('weight_logs.index')->with('success', '体重データを削除しました。');
     }
 }

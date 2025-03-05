@@ -30,6 +30,11 @@
             <button class="btn btn-secondary weight-log__search">検索</button>
             <button class="btn btn-outline-secondary weight-log__reset">リセット</button>
         </div>
+        @if(session('success'))
+        <div id="success-message" class="alert alert-success text-center">
+            {{ session('success') }}
+        </div>
+        @endif
         <button type="button" class="btn weight-log__add" data-bs-toggle="modal" data-bs-target="#createModal">
             データ追加
         </button>
@@ -108,10 +113,23 @@
 </div>
 
 <script>
-    <?php if ($errors->any()): ?>
-        var myModal = new bootstrap.Modal(document.getElementById('createModal'));
-        myModal.show();
-    <?php endif; ?>
+    document.addEventListener("DOMContentLoaded", function() {
+        // バリデーションエラーがある場合、モーダルを表示
+        <?php if ($errors->any()): ?>
+            var myModal = new bootstrap.Modal(document.getElementById('createModal'));
+            myModal.show();
+        <?php endif; ?>
+
+        // 成功メッセージ（登録 or 削除）のフェードアウト処理
+        var successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            setTimeout(function() {
+                successMessage.style.transition = "opacity 1s ease-in-out";
+                successMessage.style.opacity = "0";
+                setTimeout(() => successMessage.remove(), 1000); // 完全に消す
+            }, 3000); // 3秒後に消える
+        }
+    });
 </script>
 
 @endsection
