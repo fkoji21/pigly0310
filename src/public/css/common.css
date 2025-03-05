@@ -1,45 +1,70 @@
+/* ヘッダー全体 */
 .header {
-    background: #000;
-}
-
-.header__inner {
-    margin: 0 auto;
-    padding: 20px 15px;
-    max-width: 1230px;
-}
-
-.header-utilities {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    padding: 10px 20px;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    /* 中央揃え */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    height: 60px;
+}
+
+/* ヘッダー内の配置を中央にする */
+.header__inner {
+    width: 100%;
+    max-width: 1200px;
+    /* 幅を制限して中央配置 */
+    display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
+/* ロゴ */
 .header__logo {
-    color: #fff;
-    text-decoration: none;
+    font-size: 24px !important;
     font-weight: bold;
-    font-size: 24px;
+    text-decoration: none;
+    color: #FF69B4;
+    white-space: nowrap;
+    /* ロゴが折り返されるのを防ぐ */
 }
 
-.header-utilities nav {
-    width: 18%;
-}
-
+/* ナビゲーション */
 .header-nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
-.header-nav__link {
-    color: #fff;
-    text-decoration: none;
+/* ナビゲーションのリスト */
+.header-nav__list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
 }
 
+/* ナビゲーションの項目 */
+.header-nav__item {
+    margin-left: 20px;
+}
+
+/* ボタン */
 .header-nav__button {
+    background: none;
     border: none;
-    background: transparent;
-    color: #fff;
-    font-size: 16px;
+    font-size: 16px !important;
+    color: #333;
     cursor: pointer;
+    transition: color 0.3s;
+    white-space: nowrap;
+    /* ボタンが折り返されるのを防ぐ */
+}
+
+.header-nav__button:hover {
+    color: #FF69B4;
 }

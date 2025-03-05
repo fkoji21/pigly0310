@@ -1,0 +1,33 @@
+.container {
+    margin-top: 120px !important;
+}
+
+.card {
+    border-radius: 10px;
+    background: white;
+    width: 100%;
+    max-width: 500px;
+}
+
+.btn-gradient {
+    background: linear-gradient(to right, #e0aaff, #f5a9f1);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-gradient:hover {
+    opacity: 0.8;
+}
+
+.btn-outline-danger {
+    border: none;
+    background: none;
+    color: red;
+    font-size: 20px;
+}
+
+.btn-outline-danger:hover {
+    color: darkred;
+}

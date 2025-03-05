@@ -28,7 +28,7 @@ class WeightLogFactory extends Factory
 
         return [
             'user_id' => 1, // 1人目のユーザーに紐付け
-            'date' => $this->faker->date(),
+            'date' => $this->faker->dateTimeBetween('2020-01-01', 'now')->format('Y-m-d'),
             'weight' => $this->faker->randomFloat(1, 40, 100),
             'calories' => $this->faker->numberBetween(1000, 3000),
             'exercise_time' => $this->faker->time(),

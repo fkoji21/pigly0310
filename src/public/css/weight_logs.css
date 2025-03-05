@@ -1,0 +1,95 @@
+/* ヘッダー固定の影響を受けないように調整 */
+main {
+    margin-top: 80px !important;
+}
+
+/* 背景 */
+body {
+    background: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+/* コンテナ */
+.weight-log__container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* サマリー部分 */
+.weight-log__summary {
+    display: flex;
+    justify-content: space-around;
+    background: #fff3f8;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.summary__box {
+    text-align: center;
+}
+
+.summary__label {
+    font-size: 14px;
+    color: #777;
+}
+
+.summary__value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* テーブルのスタイル */
+.table th {
+    background: #ff69b4 !important;
+    color: white !important;
+}
+
+/* ボタン */
+.btn-primary {
+    background: linear-gradient(to right, #e0aaff, #f5a9f1);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    opacity: 0.8;
+}
+
+.btn-outline-primary {
+    color: #ff69b4;
+    border: 1px solid #ff69b4;
+}
+
+.btn-outline-primary:hover {
+    background: #ff69b4;
+    color: white;
+}
+
+/* ページネーション */
+.pagination .page-item.active .page-link {
+    background: linear-gradient(90deg, #b388eb, #ff9a9e);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+.pagination .page-link {
+    color: #333;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 3px;
+    border-radius: 5px;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc;
+}

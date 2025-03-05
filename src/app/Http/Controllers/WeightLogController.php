@@ -4,15 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WeightLog;
+use App\Models\WeightTarget;
 use Illuminate\Support\Facades\Auth;
 
 class WeightLogController extends Controller
 {
     public function index()
     {
-        // 現在ログイン中のユーザーの体重記録を取得しビューに渡す
-        $weightLogs = WeightLog::where('user_id', Auth::id())->orderBy('date', 'desc')->get();
-        return view('weight_logs.index', compact('weightLogs'));
+        $user = auth()->user(); // ログインユーザーを取得
+        $weightLogs = WeightLog::where('user_id', $user->id)
+            ->orderBy('date', 'desc')
+            ->paginate(8); // ページネーション
+
+        // 最新の体重データを取得（ログがない場合は null）
+        $latestWeight = WeightLog::where('user_id', $user->id)
+            ->orderBy('date', 'desc')
+            ->value('weight');
+
+        // 目標体重を取得（weight_target テーブルから取得）
+        $targetWeight = WeightTarget::where('user_id', $user->id)
+            ->value('target_weight');
+
+        return view('weight_logs.index', compact('weightLogs', 'latestWeight', 'targetWeight'));
     }
 
     public function create()
