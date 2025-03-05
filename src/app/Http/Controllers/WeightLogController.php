@@ -7,6 +7,7 @@ use App\Models\WeightLog;
 use App\Models\WeightTarget;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\WeightLogRequest;
+use App\Http\Requests\WeightLogUpdateRequest;
 
 class WeightLogController extends Controller
 {
@@ -57,20 +58,13 @@ class WeightLogController extends Controller
     }
 
     // 体重データを更新
-    public function update(Request $request, $id)
+    public function update(WeightLogUpdateRequest $request, $id)
     {
-        $request->validate([
-            'date' => 'required|date',
-            'weight' => 'required|numeric|min:1|max:300',
-            'calories' => 'nullable|integer|min:0',
-            'exercise_time' => 'nullable|date_format:H:i',
-            'exercise_content' => 'nullable|string|max:255',
-        ]);
 
         $log = WeightLog::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
-        $log->update($request->all());
+        $log->update($request->validated());
 
-        return redirect()->route('weight_logs.create')->with('success', '体重データを更新しました！');
+        return redirect()->route('weight_logs.index')->with('success', '体重データを更新しました！');
     }
 
     // 体重データを削除
