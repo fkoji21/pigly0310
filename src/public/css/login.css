@@ -51,3 +51,9 @@ body {
 .login__register-link:hover {
     color: #EC87EF;
 }
+
+.text-danger {
+    font-size: 14px;
+    color: red;
+    margin-top: 5px;
+}
