@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
 /* ヘッダー全体 */
 .header {
     position: fixed;
@@ -26,12 +28,12 @@
 
 /* ロゴ */
 .header__logo {
-    font-size: 24px !important;
-    font-weight: bold;
+    font-size: 28px !important;
+    font-weight: 400;
+    font-family: 'Lora', serif;
     text-decoration: none;
-    color: #FF69B4;
+    color: #EC87EF;
     white-space: nowrap;
-    /* ロゴが折り返されるのを防ぐ */
 }
 
 /* ナビゲーション */
