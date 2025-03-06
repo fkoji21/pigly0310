@@ -1,6 +1,7 @@
 /* 背景のグラデーション */
 body {
     background: linear-gradient(to bottom, #FFB6C1, #FF69B4);
+    font-family: 'Lora', serif;
 }
 
 /* ロゴ */
@@ -28,7 +29,7 @@ body {
     border: none;
     color: white;
     font-size: 16px;
-    border-radius: 25px;
+    border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
     display: block;

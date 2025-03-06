@@ -16,16 +16,16 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="mb-3">
-                <label class="form-label">メールアドレス</label>
-                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+                <label class="form-label text-start d-block">メールアドレス</label>
+                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="メールアドレス">
                 @error('email')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <label class="form-label">パスワード</label>
-                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
+                <label class="form-label text-start d-block">パスワード</label>
+                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="パスワード">
                 @error('password')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror

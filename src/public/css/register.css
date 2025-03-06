@@ -1,116 +1,89 @@
 /* 背景のグラデーション */
 body {
-    background: linear-gradient(to bottom, #ffccff, #ff99cc);
+    background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Lora', serif;
 }
 
 /* フォームのコンテナ */
 .register__container {
-    width: 400px;
+    width: 420px;
     background: white;
-    padding: 30px;
+    padding: 35px;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-align: center;
 }
 
-/* タイトル */
-.register__title {
-    font-size: 36px;
-    font-weight: bold;
-    color: #ff69b4;
+/* ロゴ */
+.login__title {
+    font-size: 60px;
+    font-weight: 400;
+    color: #EC87EF;
+    font-family: 'Lora', serif;
 }
 
 .register__subtitle {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 20px;
-    color: #555;
+    color: #666;
 }
 
 /* 入力フォーム */
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
+.form-label {
+    font-weight: bold;
+    color: #444;
 }
 
 .form-control {
-    width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
+    background: #fafafa;
+}
+
+.form-control:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 5px rgba(255, 105, 180, 0.5);
 }
 
 /* バリデーションエラーメッセージ */
-.form__error {
-    color: red;
+.invalid-feedback {
+    color: #ff4d4d;
     font-size: 12px;
     margin-top: 5px;
 }
 
 /* ボタン */
 .register__submit {
-    width: 100%;
+    width: 60%;
     padding: 12px;
-    background: linear-gradient(to right, #ff69b4, #ff1493);
+    background: linear-gradient(to right, #EC87EF, #FF69B4);
     border: none;
     color: white;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
+    display: block;
+    margin: 0 auto;
 }
 
 .register__submit:hover {
-    background: linear-gradient(to right, #ff1493, #ff69b4);
+    background: linear-gradient(to right, #fda085, #f6d365);
 }
 
-.goal-setting {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.goal-setting__box {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.goal-setting__input input {
-    width: 80px;
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.goal-setting__buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.goal-setting__button {
-    padding: 10px 20px;
-    border-radius: 5px;
+/* ログインリンク */
+.register__login-link {
+    color: #007bff;
     text-decoration: none;
-    text-align: center;
+    font-size: 14px;
 }
 
-.goal-setting__cancel {
-    background: #ccc;
-    color: black;
-}
-
-.goal-setting__submit {
-    background: linear-gradient(to right, #f6d365, #fda085);
-    color: white;
+.register__login-link:hover {
+    text-decoration: underline;
 }
