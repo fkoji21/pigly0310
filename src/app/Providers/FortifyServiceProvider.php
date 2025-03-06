@@ -42,10 +42,6 @@ class FortifyServiceProvider extends ServiceProvider
             $credentials = $request->validate([
                 'email' => ['required', 'email'],
                 'password' => ['required'],
-            ], [
-                'email.required' => 'メールアドレスを入力してください',
-                'email.email' => 'メールアドレスは「ユーザー名@ドメイン」形式で入力してください',
-                'password.required' => 'パスワードを入力してください',
             ]);
 
             // 認証処理（メールアドレス & パスワードが正しいかチェック）
