@@ -1,26 +1,28 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('css/goal.css') }}">
 @endsection
 
 @section('content')
-<div class="goal-setting">
-    <div class="goal-setting__box">
-        <h2>目標体重設定</h2>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 text-center border-0" style="max-width: 400px; width: 100%;">
+        <h2 class="mb-3">目標体重設定</h2>
         <form action="{{ route('weight_logs.goal_update') }}" method="POST">
             @csrf
-            <div class="goal-setting__input">
-                <input type="text" name="target_weight" value="{{ old('target_weight', $weightTarget->target_weight ?? '') }}" /> kg
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <input type="number" name="target_weight" class="form-control text-center w-50"
+                    value="{{ old('target_weight', $weightTarget->target_weight ?? '') }}" step="0.1" required>
+                <span class="ms-2">kg</span>
             </div>
             @error('target_weight')
-            <div class="form__error">
+            <div class="text-danger small">
                 {{ $message }}
             </div>
             @enderror
-            <div class="goal-setting__buttons">
-                <a href="{{ route('weight_logs.index') }}" class="goal-setting__button goal-setting__cancel">戻る</a>
-                <button type="submit" class="goal-setting__button goal-setting__submit">更新</button>
+            <div class="d-flex justify-content-between mt-3">
+                <a href="{{ route('weight_logs.index') }}" class="btn btn-secondary w-45 text-decoration-none">戻る</a>
+                <button type="submit" class="btn btn-gradient w-45">更新</button>
             </div>
         </form>
     </div>

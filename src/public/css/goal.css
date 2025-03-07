@@ -1,0 +1,34 @@
+/* 背景のスタイル */
+body {
+    background-color: #F9F9F9;
+    font-family: 'Lora', serif;
+}
+
+/* カードの枠線のみ適用、影なし */
+.card {
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+/* カスタムボタン */
+.btn-gradient {
+    background: linear-gradient(to right, #EC87EF, #FF69B4);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(to right, #fda085, #f6d365);
+    color: white;
+}
+
+/* ボタンのアンダーラインを消す */
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+/* ボタン幅調整 */
+.w-45 {
+    width: 45%;
+}
