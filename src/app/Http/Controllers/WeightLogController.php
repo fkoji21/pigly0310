@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\WeightLog;
-use App\Models\WeightTarget;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\WeightLogRequest;
 use App\Http\Requests\WeightLogUpdateRequest;
+use App\Models\WeightLog;
+use App\Models\WeightTarget;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WeightLogController extends Controller
 {

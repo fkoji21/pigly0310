@@ -28,7 +28,7 @@ class WeightLogRequest extends FormRequest
             'weight' => 'required|numeric|digits_between:1,4|regex:/^\d+(\.\d{1})?$/',
             'calories' => 'required|numeric',
             'exercise_time' => 'required',
-            'exercise_content' => 'nullable|string|max:120'
+            'exercise_content' => 'nullable|string|max:120',
         ];
     }
 
@@ -43,7 +43,7 @@ class WeightLogRequest extends FormRequest
             'calories.required' => '摂取カロリーを入力してください',
             'calories.numeric' => '数字で入力してください',
             'exercise_time.required' => '運動時間を入力してください',
-            'exercise_content.max' => '120文字以内で入力してください'
+            'exercise_content.max' => '120文字以内で入力してください',
         ];
     }
 }

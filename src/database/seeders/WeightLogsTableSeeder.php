@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\WeightLog;
+use Illuminate\Database\Seeder;
 
 class WeightLogsTableSeeder extends Seeder
 {

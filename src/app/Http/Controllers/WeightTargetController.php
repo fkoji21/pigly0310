@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\WeightTarget;
 use App\Http\Requests\WeightTargetRequest;
+use App\Models\WeightTarget;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 

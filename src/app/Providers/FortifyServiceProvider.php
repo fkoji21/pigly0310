@@ -1,55 +1,31 @@
 <?php
-
 namespace App\Providers;
 
-use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Fortify\Fortify;
+use App\Actions\Fortify\AuthenticateUser;
 use App\Actions\Fortify\CreateNewUser;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\ServiceProvider; // 追加
+use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        // ログインの試行回数制限
         RateLimiter::for('login', function (Request $request) {
             return Limit::perMinute(10)->by($request->ip());
         });
 
-        //Fortify のログイン画面を指定
-        Fortify::loginView(function () {
-            return view('auth.login'); //
-        });
+        // Fortify のビュー指定
+        Fortify::loginView(fn() => view('auth.login'));
+        Fortify::registerView(fn() => view('auth.register'));
 
-        //Fortify の登録画面を指定
-        Fortify::registerView(function () {
-            return view('auth.register');
-        });
-
-        //Fortify のユーザー登録処理を CreateNewUser に委託
+        // ユーザー登録処理を CreateNewUser に委託
         Fortify::createUsersUsing(CreateNewUser::class);
 
-        //ログイン後のリダイレクト先を変更
-        Fortify::redirects('login', '/weight_logs.index');
-
-        //ユーザー登録後に `/register/step2` にリダイレクト
-        Fortify::redirects('register', '/register/step2');
-
-        //Fortify のログイン認証をカスタマイズ（バリデーションを適用）
-        Fortify::authenticateUsing(function (Request $request) {
-            $credentials = $request->validate([
-                'email' => ['required', 'email'],
-                'password' => ['required'],
-            ]);
-
-            // 認証処理（メールアドレス & パスワードが正しいかチェック）
-            if (Auth::attempt($credentials)) {
-                return Auth::user(); // 認証成功
-            }
-
-            return null; // 認証失敗
-        });
+        // 認証処理を AuthenticateUser に委託
+        Fortify::authenticateUsing([AuthenticateUser::class, 'authenticate']);
     }
 }
