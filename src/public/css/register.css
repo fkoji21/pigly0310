@@ -54,7 +54,7 @@ body {
 /* バリデーションエラーメッセージ */
 .invalid-feedback {
     color: #ff4d4d;
-    font-size: 12px;
+    font-size: 16px;
     margin-top: 5px;
 }
 
@@ -65,7 +65,7 @@ body {
     background: linear-gradient(to right, #EC87EF, #FF69B4);
     border: none;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
