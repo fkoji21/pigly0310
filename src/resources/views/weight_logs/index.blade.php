@@ -27,16 +27,21 @@
     <div class="weight-log__table-container">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div>
-                <input type="date" name="start_date" class="form-control d-inline w-auto">
-                <span>〜</span>
-                <input type="date" name="end_date" class="form-control d-inline w-auto">
-                <button class="btn btn-secondary weight-log__search">検索</button>
-                <button class="btn btn-outline-secondary weight-log__reset">リセット</button>
+                <form action="{{ route('weight_logs.index') }}" method="GET">
+                    <input type="date" name="start_date" class="form-control d-inline w-auto" value="{{ request('start_date') }}">
+                    <span>〜</span>
+                    <input type="date" name="end_date" class="form-control d-inline w-auto" value="{{ request('end_date') }}">
+                    <button type="submit" class="btn btn-secondary weight-log__search">検索</button>
+                    <a href="{{ route('weight_logs.index') }}" class="btn btn-outline-secondary">リセット</a>
+                </form>
             </div>
             <button type="button" class="btn weight-log__add" data-bs-toggle="modal" data-bs-target="#createModal">
                 データ追加
             </button>
         </div>
+        @if(request('start_date') && request('end_date'))
+        <p>{{ request('start_date') }} ～ {{ request('end_date') }} の検索結果 {{ $resultCount }} 件</p>
+        @endif
 
         {{-- テーブル --}}
         <table class="table text-center">
@@ -105,11 +110,11 @@
                 <h5 class="modal-title" id="createModalLabel">Weight Logを追加</h5>
             </div>
             <div class="modal-body">
-                <form action="{{ route('weight_logs.store') }}" method="POST">
+                <form id="weightLogForm" action="{{ route('weight_logs.store') }}" method="POST" novalidate>
                     @csrf
                     <div class="mb-3">
                         <label for="date" class="form-label">日付 <span class="required">必須</span></label>
-                        <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date" required>
+                        <input type="date" class="form-control @error('date') is-invalid @enderror" id="date" name="date">
                         @error('date')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -117,7 +122,7 @@
 
                     <div class="mb-3">
                         <label for="weight" class="form-label">体重 <span class="required">必須</span></label>
-                        <input type="number" class="form-control @error('weight') is-invalid @enderror" id="weight" name="weight" step="0.1" required>
+                        <input type="number" class="form-control @error('weight') is-invalid @enderror" id="weight" name="weight" step="0.1">
                         @error('weight')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -133,7 +138,7 @@
 
                     <div class="mb-3">
                         <label for="exercise_time" class="form-label">運動時間 <span class="required">必須</span></label>
-                        <input type="text" class="form-control @error('exercise_time') is-invalid @enderror" id="exercise_time" name="exercise_time">
+                        <input type="time" class="form-control @error('exercise_time') is-invalid @enderror" id="exercise_time" name="exercise_time">
                         @error('exercise_time')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -156,5 +161,47 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // フォームのバリデーション処理
+        const form = document.getElementById("weightLogForm");
+        if (form) {
+            form.addEventListener("submit", function(event) {
+                let hasErrors = false;
 
+                // 各フィールドのバリデーション
+                document.querySelectorAll(".form-control").forEach(function(input) {
+                    if (input.classList.contains("is-invalid")) {
+                        hasErrors = true;
+                    }
+                });
+
+                if (hasErrors) {
+                    event.preventDefault(); // フォーム送信を止める
+
+                    // すでに開いているモーダルを再取得して閉じないようにする
+                    var myModal = bootstrap.Modal.getInstance(document.getElementById("createModal"));
+                    if (!myModal) {
+                        myModal = new bootstrap.Modal(document.getElementById("createModal"));
+                    }
+                    myModal.show(); // モーダルを閉じない
+                }
+            });
+        }
+
+        // ページロード時にエラーがある場合、自動でモーダルを開く
+        @if($errors -> any())
+        var myModal = new bootstrap.Modal(document.getElementById("createModal"));
+        myModal.show();
+        @endif
+
+        // 検索フォームの処理（検索ボタンを正しく動作させる）
+        const searchForm = document.getElementById("searchForm");
+        if (searchForm) {
+            searchForm.addEventListener("submit", function(event) {
+                // 検索フォームでは `event.preventDefault();` を適用しない
+            });
+        }
+    });
+</script>
 @endsection
