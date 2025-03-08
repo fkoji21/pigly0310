@@ -12,13 +12,13 @@
         <h1 class="login__title">PiGLy</h1>
         <h2 class="register__subtitle">STEP2 体重データの入力</h2>
 
-        <form method="POST" action="{{ route('register.step2.store') }}">
+        <form method="POST" action="{{ route('register.step2.store') }}" novalidate>
             @csrf
 
             <div class="mb-3">
                 <label class="form-label text-start d-block">現在の体重</label>
                 <div class="input-group">
-                    <input type="text" name="current_weight" class="form-control @error('current_weight') is-invalid @enderror" placeholder="現在の体重を入力">
+                    <input type="number" name="current_weight" class="form-control @error('current_weight') is-invalid @enderror" placeholder="現在の体重を入力" autocomplete="off"  step="0.1">
                     <span class="input-group-text">kg</span>
                 </div>
                 @error('current_weight')
@@ -29,7 +29,7 @@
             <div class="mb-3">
                 <label class="form-label text-start d-block">目標の体重</label>
                 <div class="input-group">
-                    <input type="text" name="target_weight" class="form-control @error('target_weight') is-invalid @enderror" placeholder="目標の体重を入力">
+                    <input type="number" name="target_weight" class="form-control @error('target_weight') is-invalid @enderror" placeholder="目標の体重を入力" autocomplete="off" step="0.1">
                     <span class="input-group-text">kg</span>
                 </div>
                 @error('target_weight')

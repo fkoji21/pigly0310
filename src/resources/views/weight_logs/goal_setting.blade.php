@@ -12,7 +12,7 @@
             @csrf
             <div class="d-flex align-items-center justify-content-center mb-3">
                 <input type="number" name="target_weight" class="form-control text-center w-50"
-                    value="{{ old('target_weight', $weightTarget->target_weight ?? '') }}" step="0.1" required>
+                    value="{{ old('target_weight', $weightTarget->target_weight ?? '') }}">
                 <span class="ms-2">kg</span>
             </div>
             @error('target_weight')
