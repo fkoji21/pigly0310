@@ -25,9 +25,12 @@
     border: none;
     background: none;
     color: red;
-    font-size: 20px;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
 }
 
 .btn-outline-danger:hover {
     color: darkred;
+    color: white;
 }

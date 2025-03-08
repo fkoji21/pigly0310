@@ -25,14 +25,20 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label fw-bold">体重（kg）</label>
-                <input type="number" name="weight" class="form-control" value="{{ $log->weight }}" step="0.1" required>
+                <label class="form-label fw-bold">体重</label>
+                <div class="input-group">
+                    <input type="number" name="weight" class="form-control" value="{{ $log->weight }}" step="0.1" required>
+                    <span class="input-group-text">kg</span>
+                </div>
                 @error('weight') <p class="text-danger small">{{ $message }}</p> @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label fw-bold">摂取カロリー</label>
-                <input type="number" name="calories" class="form-control" value="{{ $log->calories }}">
+                <div class="input-group">
+                    <input type="number" name="calories" class="form-control" value="{{ $log->calories }}">
+                    <span class="input-group-text">cal</span>
+                </div>
             </div>
 
             <div class="mb-3">
@@ -46,17 +52,18 @@
             </div>
 
             <div class="d-flex justify-content-between mt-4">
-                <a href="{{ route('weight_logs.index') }}" class="btn btn-secondary">戻る</a>
-                <button type="submit" class="btn btn-gradient">更新</button>
+                <div class="d-flex justify-content-center w-100">
+                    <a href="{{ route('weight_logs.index') }}" class="btn btn-secondary me-3">戻る</a>
+                    <button type="submit" class="btn btn-gradient">更新</button>
+                </div>
+                <form action="{{ route('weight_logs.destroy', $log->id) }}" method="POST" class="ms-auto">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
             </div>
-        </form>
-
-        <form action="{{ route('weight_logs.destroy', $log->id) }}" method="POST" class="text-center mt-3">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-outline-danger">
-                <i class="fas fa-trash"></i> 削除
-            </button>
         </form>
     </div>
 </div>

@@ -18,22 +18,22 @@
             <div class="mb-3">
                 <label class="form-label text-start d-block">現在の体重</label>
                 <div class="input-group">
-                    <input type="number" name="current_weight" class="form-control @error('current_weight') is-invalid @enderror" placeholder="現在の体重を入力" autocomplete="off"  step="0.1">
+                    <input type="text" name="current_weight" class="form-control @error('current_weight') is-invalid @enderror" placeholder="現在の体重を入力" value="{{ old('current_weight') }}" autocomplete="off"  step="0.1">
                     <span class="input-group-text">kg</span>
                 </div>
                 @error('current_weight')
-                <div class="invalid-feedback">{{ $message }}</div>
+                <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
                 <label class="form-label text-start d-block">目標の体重</label>
                 <div class="input-group">
-                    <input type="number" name="target_weight" class="form-control @error('target_weight') is-invalid @enderror" placeholder="目標の体重を入力" autocomplete="off" step="0.1">
+                    <input type="text" name="target_weight" class="form-control @error('target_weight') is-invalid @enderror" placeholder="目標の体重を入力" value="{{ old('target_weight') }}" autocomplete="off" step="0.1">
                     <span class="input-group-text">kg</span>
                 </div>
                 @error('target_weight')
-                <div class="invalid-feedback">{{ $message }}</div>
+                <div class="invalid-feedback d-block">{{ $message }}</div>
                 @enderror
             </div>
 

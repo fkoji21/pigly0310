@@ -42,11 +42,6 @@ class WeightLogController extends Controller
         return view('weight_logs.index', compact('weightLogs', 'latestWeight', 'targetWeight', 'startDate', 'endDate', 'resultCount'));
     }
 
-    public function create()
-    {
-        return view('weight_logs.create');
-    }
-
     // 体重をデータベースに保存
     public function store(WeightLogRequest $request)
     {

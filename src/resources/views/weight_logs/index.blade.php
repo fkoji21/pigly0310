@@ -44,7 +44,7 @@
         @endif
 
         {{-- テーブル --}}
-        <table class="table text-center">
+        <table class="table table-hover text-center">
             <thead>
                 <tr>
                     <th>日付</th>
@@ -63,7 +63,7 @@
                     <td>{{ $log->exercise_time ?? '00:00' }}</td>
                     <td>
                         <a href="{{ route('weight_logs.edit', $log->id) }}" class="btn btn-outline-primary btn-sm edit-icon">
-                            ✏️
+                            <img src="{{ asset('images/edit-icon.png') }}" alt="編集" width="20">
                         </a>
                     </td>
                 </tr>

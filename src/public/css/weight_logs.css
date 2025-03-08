@@ -128,8 +128,11 @@ body {
 }
 
 .edit-icon:hover {
-    color: #d14792;
-    /* ホバー時の色変更 */
+    color: #d14792 !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8d7da !important;
 }
 
 /* テーブルの縦線を削除 */
@@ -221,8 +224,8 @@ body {
 
 /* 戻るボタン */
 .modal-footer .btn-secondary {
-    background: #ccc;
-    color: #333;
+    background: #6b6b6b;
+    color: #ffffff;
 }
 
 /* 登録ボタン */
@@ -237,8 +240,4 @@ body {
     border-top: none;
     display: flex;
     justify-content: center;
-}
-
-.btn-primary:hover {
-    opacity: 0.8;
 }
