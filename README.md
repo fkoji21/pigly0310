@@ -14,7 +14,7 @@ Pigly は、ユーザーが自身の体重データを記録・管理できる *
 
 ## 🛠️ 使用技術
 
-- **PHP:** PHP: 7.4.9（開発環境） / 8.1.x（Laravel Sail のデフォルト環境）
+- **PHP:** 7.4.9（開発環境） / 8.1.x（Laravel Sail のデフォルト環境）
 - **Laravel:** 8.83.29
 - **MySQL:** 8.0.x
 - **Docker / Docker Compose**
