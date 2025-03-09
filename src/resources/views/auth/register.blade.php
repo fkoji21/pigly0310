@@ -12,7 +12,7 @@
         <h1 class="login__title">PiGLy</h1>
         <h2 class="register__subtitle">STEP1 アカウント情報の登録</h2>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" novalidate>
             @csrf
             <div class="mb-3">
                 <label class="form-label text-start d-block">お名前</label>

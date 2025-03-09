@@ -35,6 +35,11 @@
                     <a href="{{ route('weight_logs.index') }}" class="btn btn-outline-secondary">リセット</a>
                 </form>
             </div>
+            @if (session('success'))
+            <div id="error-message" class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             <button type="button" class="btn weight-log__add" data-bs-toggle="modal" data-bs-target="#createModal">
                 データ追加
             </button>
@@ -202,6 +207,26 @@
                 // 検索フォームでは `event.preventDefault();` を適用しない
             });
         }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // 3秒後にフェードアウト
+        setTimeout(function() {
+            let successMessage = document.getElementById('success-message');
+            let errorMessage = document.getElementById('error-message');
+
+            if (successMessage) {
+                successMessage.style.transition = 'opacity 0.5s';
+                successMessage.style.opacity = '0';
+                setTimeout(() => successMessage.remove(), 500);
+            }
+
+            if (errorMessage) {
+                errorMessage.style.transition = 'opacity 0.5s';
+                errorMessage.style.opacity = '0';
+                setTimeout(() => errorMessage.remove(), 500);
+            }
+        }, 3000); // 3秒後に消える
     });
 </script>
 @endsection

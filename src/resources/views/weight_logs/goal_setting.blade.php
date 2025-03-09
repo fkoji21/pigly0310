@@ -8,7 +8,7 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 text-center border-0" style="max-width: 400px; width: 100%;">
         <h2 class="mb-3">目標体重設定</h2>
-        <form action="{{ route('weight_logs.goal_update') }}" method="POST">
+        <form action="{{ route('weight_logs.goal_update') }}" method="POST" novalidate>
             @csrf
             <div class="d-flex align-items-center justify-content-center mb-3">
                 <input type="number" name="target_weight" class="form-control text-center w-50"
