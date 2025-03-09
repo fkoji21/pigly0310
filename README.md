@@ -14,11 +14,11 @@ Pigly は、ユーザーが自身の体重データを記録・管理できる *
 
 ## 🛠️ 使用技術
 
-- **フレームワーク:** Laravel 10
-- **フロントエンド:** Bootstrap 5, CSS
-- **データベース:** MySQL
-- **認証:** Laravel Fortify
-- **開発環境:** Docker (Laravel Sail)
+- **PHP:** 8.1.x（Laravel Sail のデフォルト）
+- **Laravel:** 10.x
+- **MySQL:** 8.0.x
+- **Docker / Docker Compose**
+- **HTML / CSS（Bootstrap 5 使用）**
 
 ---
 
@@ -111,6 +111,9 @@ php artisan serve
 ├── composer.json
 ├── README.md
 ```
+## 📌 ER図
+
+![ER図](pigly.drawio.png)
 
 ---
 
@@ -164,11 +167,3 @@ php artisan serve
 ## 📝 ライセンス
 
 このプロジェクトは **MIT ライセンス** のもとで公開されています。自由にご利用・改変してください。
-
----
-
-## 🙌 コントリビュート
-
-バグ報告や機能追加の提案は **GitHub Issues** にて受け付けています！
-
-📧 **お問い合わせ:** your-email@example.com
