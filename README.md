@@ -28,7 +28,7 @@ Pigly は、ユーザーが自身の体重データを記録・管理できる *
 
 ```bash
 git clone https://github.com/fkoji21/pigly0310.git
-cd pigly
+cd pigly0310
 cp .env.example .env
 ```
 
